@@ -10,7 +10,7 @@ namespace Clean.Test.UnitTest.DomainTests
         }
 
         [Test]
-        public async Task GetAllPermissions_GetAll()
+        public void GetAllPermissions_GetAll()
         {
             //Assign
             var permissions = new Domain.Resources.Permissions.Commons.AllPermissions();

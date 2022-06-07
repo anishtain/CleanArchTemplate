@@ -12,6 +12,7 @@ namespace Clean.Domain.Resources.Exceptions.Commons
         Douplicate,
         BadArgument,
         Unauthorize,
-        Validation
+        Validation,
+        ApiFailed
     }
 }
