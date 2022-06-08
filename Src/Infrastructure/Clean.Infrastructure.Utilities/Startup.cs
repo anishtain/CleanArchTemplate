@@ -14,7 +14,8 @@ namespace Clean.Infrastructure.Utilities
         public static IServiceCollection AddInfrastructureUtilities(this IServiceCollection services)
         {
             services.AddScoped<IFileUtility, FileUtility>();
-
+            services.AddScoped<IFileUpload, ImageFileUtility>();
+            services.AddScoped<IFileUpload, VideoFileUtility>();
             return services;
         }
     }

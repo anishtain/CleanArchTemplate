@@ -3,24 +3,24 @@ using log4net.Config;
 using System.Reflection;
 using System.Text;
 
-namespace Clean.Api.Filters
+namespace Clean.Api.Middlewares
 {
-    public class CleanLog
+    public class CleanLogMiddleware
     {
         private readonly RequestDelegate _next;
         private readonly ILog _log;
 
-        public CleanLog(RequestDelegate next)
+        public CleanLogMiddleware(RequestDelegate next)
         {
             var logRepo = LogManager.GetLoggerRepository(Assembly.GetEntryAssembly());
             XmlConfigurator.Configure(logRepo, new FileInfo("web.config"));
             _next = next;
-            _log = LogManager.GetLogger(typeof(CleanLog));
+            _log = LogManager.GetLogger(typeof(CleanLogMiddleware));
         }
 
         public async Task Invoke(HttpContext context)
         {
-            if(context.Request.Path.ToString().ToLower().Contains("swagger"))
+            if (context.Request.Path.ToString().ToLower().Contains("swagger"))
                 await _next.Invoke(context);
             else
             {

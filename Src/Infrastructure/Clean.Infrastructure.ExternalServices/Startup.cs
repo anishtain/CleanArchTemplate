@@ -14,7 +14,7 @@ namespace Clean.Infrastructure.ExternalServices
         public static IServiceCollection AddInfrastructureExternalService(this IServiceCollection services)
         {
             services.AddScoped<IRestServiceClient, RestServiceClient>();
-
+            services.AddScoped<HttpClient>();
             return services;
         }
     }

@@ -14,7 +14,11 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Application\Clean.Application.UseCases\Clean.Application.UseCases.csproj" />
+    <ProjectReference Include="..\Domain\Clean.Domain.Policies\Clean.Domain.Policies.csproj" />
     <ProjectReference Include="..\Infrastructure\Clean.Infrastructure.Data\Clean.Infrastructure.Datas.csproj" />
+    <ProjectReference Include="..\Infrastructure\Clean.Infrastructure.ExternalServices\Clean.Infrastructure.ExternalServices.csproj" />
+    <ProjectReference Include="..\Infrastructure\Clean.Infrastructure.Repositories\Clean.Infrastructure.Repositories.csproj" />
+    <ProjectReference Include="..\Infrastructure\Clean.Infrastructure.Utilities\Clean.Infrastructure.Utilities.csproj" />
   </ItemGroup>
 
 </Project>
