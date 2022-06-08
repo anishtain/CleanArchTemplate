@@ -34,6 +34,8 @@ namespace Clean.Api.Middlewares
                     context.Request.Body.Seek(0, SeekOrigin.Begin);
 
                     MemoryStream responseBodyStream = new();
+                    context.Response.Body = responseBodyStream;
+
                     await _next.Invoke(context);
 
                     responseBodyStream.Seek(0, SeekOrigin.Begin);
@@ -44,9 +46,9 @@ namespace Clean.Api.Middlewares
                     if (!string.IsNullOrWhiteSpace(context.Response.ContentType) && context.Response.ContentType.ToLower().Contains("application/json"))
                     {
                         if (context.Response.StatusCode == 200)
-                            _log.Info($"{requestUrl} => {context.Response.StatusCode} => {requestText}");
+                            _log.Info($"{requestUrl} => {context.Response.StatusCode} => {requestText} => {responseText}");
                         else
-                            _log.Error($"{requestUrl} => {context.Response.StatusCode} => {requestText}");
+                            _log.Error($"{requestUrl} => {context.Response.StatusCode} => {requestText} => {responseText}");
                     }
 
                     await context.Response.Body.CopyToAsync(originalResponse);

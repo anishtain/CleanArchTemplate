@@ -2,7 +2,7 @@
 {
     public class BaseResponse<T>
     {
-        public BaseResponse(bool isSuccess, int statusCode, T data, BaseError error)
+        public BaseResponse(bool isSuccess, int statusCode, T data, BaseError error = null)
         {
             IsSuccess = isSuccess;
             StatusCode = statusCode;
