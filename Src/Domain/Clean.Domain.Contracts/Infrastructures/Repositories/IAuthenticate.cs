@@ -21,5 +21,7 @@ namespace Clean.Domain.Contracts.Infrastructures.Repositories
         Task RegisterUserByUserNameAndPassword(string userName, string password, string roleId);
 
         Task RegisterUserWithPhoneAndCode(string phone);
+
+        Task<IList<string>> GetCurrentPermissions();
     }
 }

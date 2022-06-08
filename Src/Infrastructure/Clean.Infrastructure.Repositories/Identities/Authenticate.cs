@@ -92,7 +92,18 @@ namespace Clean.Infrastructure.Repositories.Identities
             var role = await _userManager.GetRolesAsync(user);
 
             return role.First();
-        } 
+        }
+
+        public async Task<IList<string>> GetCurrentPermissions()
+        {
+            var currentUser = await GetCurrentUser();
+
+            var currentRole = await GetUserRole(currentUser);
+
+            var permissions = await _roleManager.GetClaimsAsync(await _roleManager.Roles.FirstOrDefaultAsync(x => x.Id == currentRole));
+
+            return permissions.Select(x => x.Value).ToList();
+        }
 
         public async Task RegisterUserByUserNameAndPassword(string userName, string password, string roleId)
         {

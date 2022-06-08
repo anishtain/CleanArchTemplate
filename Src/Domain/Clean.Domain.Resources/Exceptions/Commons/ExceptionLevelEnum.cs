@@ -10,6 +10,7 @@ namespace Clean.Domain.Resources.Exceptions.Commons
     {
         Domain,
         Application,
-        Infrastructure
+        Infrastructure,
+        Api
     }
 }
